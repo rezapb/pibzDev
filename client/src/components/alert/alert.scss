@@ -1,0 +1,31 @@
+@import './../../assets/utilities.scss';
+
+@keyframes cssAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.alert-parent {
+    font-family: 'IRANYekan', Poppins;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    z-index: 9;
+
+    .alert {
+        animation: cssAnimation ease 5s;
+        margin: 5px;
+
+    }
+}
