@@ -84,19 +84,30 @@ const Post = ({ clearLastProfile, getPostById, postData, loading, match }) => {
     return contents.map((content, index) => {
       return (
         <Box padding={3} key={index}>
-          <Typography variant='h5' paragraph>
-            {content.subtitle}
-          </Typography>
-          <Typography variant='body1' align='justify' className={classes.text}>
-            {content.text}
-          </Typography>
-          <SyntaxHighlighter
-            className={classes.code}
-            language='javascript'
-            style={atomOneDarkReasonable}
-          >
-            {content.code}
-          </SyntaxHighlighter>
+          {content.subtitle ? (
+            <Typography variant='h5' paragraph>
+              {content.subtitle}
+            </Typography>
+          ) : null}
+          {content.text ? (
+            <Typography
+              variant='body1'
+              align='justify'
+              className={classes.text}
+            >
+              {content.text}
+            </Typography>
+          ) : null}
+
+          {content.code ? (
+            <SyntaxHighlighter
+              className={classes.code}
+              language='javascript'
+              style={atomOneDarkReasonable}
+            >
+              {content.code}
+            </SyntaxHighlighter>
+          ) : null}
         </Box>
       );
     });
