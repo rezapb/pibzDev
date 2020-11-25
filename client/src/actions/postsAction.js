@@ -10,6 +10,7 @@ import {
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
   CLEAR_LAST_POST,
+  CLEAR_LAST_CREATE_POST_DATA,
   POST_COMMENT_SUCCESS,
   POST_COMMENT_FAILURE,
   GET_USER_POSTS_SUCCESS,
@@ -129,6 +130,19 @@ const clearPost = () => {
 export const clearLastPost = () => {
   return async (dispatch) => {
     dispatch(clearPost());
+  };
+};
+
+// Clear last create post data
+const clearCreatePostData = () => {
+  return {
+    type: CLEAR_LAST_CREATE_POST_DATA,
+  };
+};
+
+export const clearLastCreatePostData = () => {
+  return async (dispatch) => {
+    dispatch(clearCreatePostData());
   };
 };
 

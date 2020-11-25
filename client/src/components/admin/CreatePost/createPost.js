@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 // Components
 import UploadFile from "./uploadFile";
 import PostContent from "./postContent";
+
+// Actions
+import { clearLastCreatePostData } from "./../../../actions/postsAction";
 
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,7 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreatePost = () => {
+const CreatePost = ({ clearLastCreatePostData }) => {
+  useEffect(() => {
+    clearLastCreatePostData();
+  });
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -43,4 +49,6 @@ const CreatePost = () => {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, {})(CreatePost);
+export default connect(mapStateToProps, { clearLastCreatePostData })(
+  CreatePost
+);

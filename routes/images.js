@@ -110,6 +110,14 @@ router.post(
 // Delete single Image by image name
 router.post("/delete/:imageName", verifyToken, async (req, res) => {
   try {
+    // Remove image from IMAGE model
+    const img = await Image.findOne({ image: req.params.imageName });
+    if (!img) {
+      return res.status(400).json({ msg: "Image not found" });
+    }
+    await img.remove();
+
+    // Remove image from storage
     const image = gfs
       .find({ filename: req.params.imageName })
       .toArray((err, files) => {

@@ -12,6 +12,7 @@ import {
   getUserPostsCount,
   clearPostsCount,
   clearPosts,
+  clearLastCreatePostData,
 } from "./../../../actions/postsAction";
 
 // Material UI
@@ -96,12 +97,14 @@ const AdminPosts = ({
   clearPostsCount,
   postsCount,
   clearPosts,
+  clearLastCreatePostData,
 }) => {
   const classes = useStyles();
   const [page, setPage] = useState(1);
   moment.loadPersian({ usePersianDigits: true });
 
   useEffect(() => {
+    clearLastCreatePostData();
     clearLastPost();
     clearPosts();
     clearPostsCount();
@@ -334,4 +337,5 @@ export default connect(mapStateToProps, {
   getUserPostsCount,
   clearPostsCount,
   clearPosts,
+  clearLastCreatePostData,
 })(AdminPosts);

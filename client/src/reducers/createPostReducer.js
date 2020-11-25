@@ -3,6 +3,7 @@ import {
   POST_IMG_FAILURE,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
+  CLEAR_LAST_CREATE_POST_DATA,
 } from "./../actions/types";
 
 const initialState = {
@@ -37,6 +38,14 @@ const createPostReducer = (state = initialState, action) => {
       return {
         ...state,
         errors: payload,
+      };
+    case CLEAR_LAST_CREATE_POST_DATA:
+      return {
+        ...state,
+        imageName: null,
+        uploaded: false,
+        post: null,
+        errors: null,
       };
     default:
       return state;
